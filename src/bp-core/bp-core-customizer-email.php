@@ -57,11 +57,9 @@ function bp_email_init_customizer( WP_Customize_Manager $wp_customize ) {
 		$wp_customize->add_control( new $args['class']( $wp_customize, $control_id, $args ) );
 	}
 
-
 	/*
 	 * Hook actions/filters for further configuration.
 	 */
-
 	add_filter( 'customize_section_active', 'bp_email_customizer_hide_sections', 12, 2 );
 
 	if ( is_customize_preview() ) {
