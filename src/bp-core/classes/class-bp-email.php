@@ -161,10 +161,10 @@ class BP_Email {
 				$domain = substr( $domain, 4 );
 			}
 
-		} elseif ( function_exists( 'gethostname' ) && gethostname() !== false ) {
+		} elseif ( function_exists( 'gethostname' ) && false !== gethostname() ) {
 			$domain = gethostname();
 
-		} elseif ( php_uname( 'n' ) !== false ) {
+		} elseif ( false !== php_uname( 'n' ) ) {
 			$domain = php_uname( 'n' );
 
 		} else {
@@ -207,7 +207,7 @@ class BP_Email {
 	 */
 	public function get( $property_name, $transform = 'raw' ) {
 		// "content" is replaced by HTML or plain text depending on $content_type.
-		if ( $property_name === 'content' ) {
+		if ( 'content' === $property_name ) {
 			$property_name = 'content_' . $this->get( 'content_type' );
 
 			if ( ! in_array( $property_name, array( 'content_html', 'content_plaintext', ), true ) ) {
