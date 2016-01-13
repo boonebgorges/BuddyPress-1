@@ -2880,6 +2880,7 @@ function bp_send_email( $email_type, $to, $args = array() ) {
 
 	// Has wp_mail() been filtered to send HTML emails?
 	if ( is_null( $wp_html_emails ) ) {
+		/** This filter is documented in wp-includes/pluggable.php */
 		$wp_html_emails = 'text/html' === apply_filters( 'wp_mail_content_type', 'text/plain' );
 	}
 
