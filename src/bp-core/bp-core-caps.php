@@ -139,6 +139,13 @@ function bp_remove_caps() {
  * @return array Actual capabilities for meta capability. See {@link WP_User::has_cap()}.
  */
 function bp_map_meta_caps( $caps, $cap, $user_id, $args ) {
+	switch ( $cap ) {
+		case 'edit_bpemail' :
+		case 'edit_bpemails' :
+		case 'edit_others_bpemails' :
+			$caps = array( 'bp_moderate' );
+			break;
+	}
 
 	/**
 	 * Filters the community caps mapping to be built in WordPress caps.
